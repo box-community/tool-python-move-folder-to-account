@@ -9,7 +9,8 @@ pip install -r requirements.txt
 move-folder-to-account finds a top level folder named "migration" which should contain folders with username's of users in your enterprise as the folder's name. Then it transfers the contents to each user by inviting them as a co-owner and then dropping itself from the folder making the intended user the owner of the contents.
 
 The use case this script was for when our Research File System (RFS) was being shut down. All files from RFS were uploaded to a centralized Box account and this script was used on that account to send the users their files on Box.
-##Configuration
+
+## Configuration
 move-folder-to-account uses [`config.py`](config.py) as a configuration file. This configuration specifies the Box app's [JWT credentials](https://github.com/box-community/jwt-app-primer) as well as the runtime arguments.
 
 * `user_id` specifies the user whose folders are to be renamed. 
