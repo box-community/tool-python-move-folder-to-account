@@ -10,6 +10,7 @@ move-folder-to-account finds a top level folder named "migration" which should c
 
 The use case this script was for when our Research File System (RFS) was being shut down. All files from RFS were uploaded to a centralized Box account and this script was used on that account to send the users their files on Box.
 ##Configuration
-Folder-tree-rename uses JWT to authenticate to Box. For a primer on JWT, check out <a href="https://github.com/box-community/jwt-app-primer">this link</a>. Use the user_id field in config.py to specify where the migration files are hosted.
+move-folder-to-account uses [`config.py`](config.py) as a configuration file. This configuration specifies the Box app's [JWT credentials](https://github.com/box-community/jwt-app-primer) as well as the runtime arguments.
 
-On the account that has the files to be transferred, make sure that the contents are in a file named "migration" and the sub-folders are named with the username's of the users to migrate to.
+* `user_id` specifies the user whose folders are to be renamed. 
+* `base_folder_id` specifies the folder which holds all of the folders with usernames to migrate to. For example, if all of the folders are in a folder called "migration", you would find the id of the folder in the url of the page used to access the folder, and use that value as the `base_folder_id`. If the folders with usernames are at the top level of your account, use the value '0'.

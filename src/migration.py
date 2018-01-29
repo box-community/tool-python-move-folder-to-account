@@ -33,17 +33,12 @@ failed_users = []  # here is our list of users whose auto-accept were likely off
 
 def run_collab(box_client):
     global migration_folder, collaboration
-    root_folder = box_client.folder(folder_id='0')
-    folder_names = root_folder.get_items(limit=1000, offset=0)  # grab all of the top level folders
 
-    for name in folder_names:  # grab the folder named migration
-        print(name)
-        if name.name == "migration":
-            migration_folder = name
+    migration_folder = client.folder(folder_id=config.base_folder_id).get()
 
     users = migration_folder.get_items(limit=1000, offset=0)  # get the items from inside
     for user in users:  # go through the folders in migration
-        new_name = 'RFS_Migration_' + user.name
+        new_name = config.new_folder_prefix + user.name
         collab_folder = user.rename(new_name)  # rename the folder
         f.write('\nFolder {0} renamed'.format(collab_folder.get()['name']))
         print('\nFolder {0} renamed'.format(collab_folder.get()['name']))
