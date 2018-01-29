@@ -1,11 +1,11 @@
 # move-folder-to-account
 
-##Install
+## Install
 ```
 pip install -r requirements.txt
 ```
 
-##Description
+## Description
 move-folder-to-account finds a top level folder named "migration" which should contain folders with username's of users in your enterprise as the folder's name. Then it transfers the contents to each user by inviting them as a co-owner and then dropping itself from the folder making the intended user the owner of the contents.
 
 The use case this script was for when our Research File System (RFS) was being shut down. All files from RFS were uploaded to a centralized Box account and this script was used on that account to send the users their files on Box.
